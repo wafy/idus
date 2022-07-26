@@ -1,7 +1,6 @@
 package com.homework.idus.core.user.command;
 
 import com.homework.idus.core.exception.UserExistException;
-import com.homework.idus.core.user.UserRepository;
 import com.homework.idus.core.user.query.UserSearcherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,6 @@
 package com.homework.idus.core.user.command;
 
 import com.homework.idus.core.user.Gender;
-import com.homework.idus.core.user.UserDescription;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
