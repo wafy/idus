@@ -1,7 +1,6 @@
 package com.homework.idus.web.v1.user.signup;
 
 import com.homework.idus.core.user.fixture.UserFixture;
-import org.junit.Assert;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -10,9 +9,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.util.Locale;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -203,6 +200,8 @@ class SignupRequestTest {
         @DisplayName("비밀번호 유효성 체크")
         class Context_request_password {
 
+
+
             @Nested
             @DisplayName("제약 사항에 포함되지 않는 문자열이 주어지면")
             class Context_null_password {
@@ -263,7 +262,41 @@ class SignupRequestTest {
                     Set<ConstraintViolation<SignupRequest>> violations = validator.validate(request);
                     Assertions.assertNotNull(violations);
                     violations.forEach
-                            (error -> assertEquals("전화번호는 20자리 이내입니다.", error.getMessage()));
+                            (error -> assertEquals("숫자 포함 20글자 이내 입니다", error.getMessage()));
+                }
+            }
+        }
+
+        @Nested
+        @DisplayName("이메일 유효성 체크")
+        class Context_request_email {
+
+            @Nested
+            @DisplayName("요효한 이메일 형식이 아닌 요청")
+            class Context_un_valid_email {
+                @ParameterizedTest
+                @ValueSource(strings = {
+                        "",
+                        " ",
+                        "asaa.com",
+                        "test@test",
+                        "@aaa.com",
+                        "a2d123344",
+                        "이메일@.com"
+                })
+                @DisplayName("에외를 던진다")
+                void it_throws_exception(String input) {
+                    SignupRequest request = new SignupRequest(
+                            UserFixture.givenName,
+                            UserFixture.givenNickname,
+                            UserFixture.givenPassword,
+                            UserFixture.givenMobilePhoneNo,
+                            input,
+                            UserFixture.givenGender);
+                    Set<ConstraintViolation<SignupRequest>> violations = validator.validate(request);
+                    Assertions.assertNotNull(violations);
+                    violations.forEach
+                            (error -> assertEquals("유효한 이메일 형식이 아닙니다", error.getMessage()));
                 }
             }
         }
