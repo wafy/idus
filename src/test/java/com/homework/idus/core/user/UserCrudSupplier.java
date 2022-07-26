@@ -2,6 +2,7 @@ package com.homework.idus.core.user;
 
 import com.homework.idus.axiom.target.ForTestOnly;
 import com.homework.idus.core.user.command.UserCreator;
+import com.homework.idus.core.user.command.UserRepository;
 import com.homework.idus.core.user.query.UserSearcher;
 import com.homework.idus.core.user.query.UserSearcherRepository;
 import lombok.AccessLevel;

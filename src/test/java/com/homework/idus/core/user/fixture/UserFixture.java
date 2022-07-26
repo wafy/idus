@@ -6,7 +6,7 @@ import com.homework.idus.core.user.command.User;
 
 public class UserFixture {
 
-    public static final String givenName = "아이디어스";
+    public static final String givenName = "홍길동";
     public static final String givenNickname = "idus";
     public static final String givenPassword = "1234a12341233!A";
     public static final String givenMobilePhoneNo = "010-1234-1234";
