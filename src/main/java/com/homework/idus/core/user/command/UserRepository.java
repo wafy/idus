@@ -1,4 +1,4 @@
-package com.homework.idus.core.user;
+package com.homework.idus.core.user.command;
 
 import com.homework.idus.core.user.command.User;
 import org.springframework.data.repository.CrudRepository;
