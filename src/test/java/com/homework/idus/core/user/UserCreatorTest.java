@@ -1,5 +1,6 @@
 package com.homework.idus.core.user;
 
+import com.homework.idus.core.user.command.User;
 import com.homework.idus.core.user.fixture.UserFixture;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -28,10 +29,5 @@ public class UserCreatorTest extends UserCrudSupplier {
                 Assertions.assertEquals(givenUser.getName(), result.getName());
             }
         }
-
     }
-
-
-
-
 }

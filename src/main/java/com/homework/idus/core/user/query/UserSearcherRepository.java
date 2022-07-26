@@ -1,5 +1,6 @@
-package com.homework.idus.core.user;
+package com.homework.idus.core.user.query;
 
+import com.homework.idus.core.user.command.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

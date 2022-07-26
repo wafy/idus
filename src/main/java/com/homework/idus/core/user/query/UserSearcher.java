@@ -1,5 +1,6 @@
-package com.homework.idus.core.user;
+package com.homework.idus.core.user.query;
 
+import com.homework.idus.core.user.command.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.Optional;

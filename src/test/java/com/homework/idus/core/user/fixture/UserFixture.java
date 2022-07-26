@@ -2,7 +2,7 @@ package com.homework.idus.core.user.fixture;
 
 
 import com.homework.idus.core.user.Gender;
-import com.homework.idus.core.user.User;
+import com.homework.idus.core.user.command.User;
 
 public class UserFixture {
 

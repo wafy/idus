@@ -1,6 +1,7 @@
 package com.homework.idus.web.v1.user.signup;
 
 import com.homework.idus.core.user.Gender;
+import com.homework.idus.core.user.UserDescription;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +12,7 @@ import javax.validation.constraints.*;
  */
 @Getter
 @NoArgsConstructor
-public class SignupRequest {
+public class SignupRequest implements UserDescription {
 
     @Size(min = 1, max = 20, message = "이름은 최대 20글자 까지 가능합니다")
     @NotBlank(message = "이름은 필수 값입니다")
@@ -53,4 +54,8 @@ public class SignupRequest {
         this.gender = gender;
     }
 
+    @Override
+    public Long getId() {
+        return 0L;
+    }
 }

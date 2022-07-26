@@ -1,7 +1,7 @@
 package com.homework.idus.config;
 
 
-import com.homework.idus.core.user.UserSearcherRepository;
+import com.homework.idus.core.user.query.UserSearcherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

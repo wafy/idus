@@ -1,6 +1,8 @@
-package com.homework.idus.core.user;
+package com.homework.idus.core.user.command;
 
 import com.homework.idus.core.exception.UserExistException;
+import com.homework.idus.core.user.UserRepository;
+import com.homework.idus.core.user.query.UserSearcherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,8 +10,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserCreator {
     private final UserRepository userRepository;
-
-
     private final UserSearcherRepository userSearcherRepository;
 
     public User create(User user) {
@@ -18,4 +18,5 @@ public class UserCreator {
         }
         return userRepository.save(user);
     }
+
 }

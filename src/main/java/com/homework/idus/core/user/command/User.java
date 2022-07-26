@@ -1,14 +1,12 @@
-package com.homework.idus.core.user;
+package com.homework.idus.core.user.command;
 
-import com.homework.idus.web.v1.user.signup.SignupRequest;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.homework.idus.core.user.Gender;
+import com.homework.idus.core.user.UserDescription;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,11 +16,10 @@ import java.util.stream.Collectors;
 @Getter
 @Entity
 @Table(name = "users")
-@NoArgsConstructor
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @Column(nullable = false, length = 20)
@@ -47,6 +44,10 @@ public class User implements UserDetails {
     @Builder.Default
     private List<String> roles = new ArrayList<>();
 
+    /**
+     * JPA가 필요로 합니다.
+     */
+   public User() {}
     private User(String name,
                 String nickname,
                 String password,
@@ -70,7 +71,7 @@ public class User implements UserDetails {
         return new User(name, nickname, password, mobilePhoneNo, email, gender);
     }
 
-    public static User of(SignupRequest request) {
+    public static User of(UserDescription request) {
         return User.of(request.getName(),
                 request.getNickname(),
                 request.getPassword(),
