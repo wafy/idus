@@ -1,20 +1,21 @@
 spring:
   datasource:
-    hikari:
-      password: 1234
-      jdbc-url: jdbc:mysql://127.0.0.1:3306/idus;MODE=MYSQL?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
-      username: root
-      driver-class-name: org.mariadb.jdbc.Driver
+    password: 1234
+    url: jdbc:mysql://127.0.0.1:3306/idus?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: root
+    driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     defer-datasource-initialization: true
     show-sql: true
     hibernate:
       ddl-auto: create
-
     properties:
       hibernate:
         format_sql: true
-       # dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        # dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   output:
     ansi:
       enabled: always

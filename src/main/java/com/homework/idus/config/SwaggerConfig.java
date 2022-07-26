@@ -18,8 +18,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
     private ApiInfo swaggerInfo() {
-        return new ApiInfoBuilder().title("IDUS API")
-                .description("IDUS API Docs")
+        return new ApiInfoBuilder().title("Idus API")
+                .description("Idus API Docs")
                 .version("1.0.0")
                 .build();
     }
