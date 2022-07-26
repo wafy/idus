@@ -24,6 +24,11 @@ class LoginControllerTest extends UserCrudSupplier {
     @Autowired
     MockMvc mockMvc;
 
+    @BeforeEach
+    void prepareData() {
+        getUserDeleteAll();
+    }
+
     @Nested
     @DisplayName("login 메소드")
     class Describe_signup_method {

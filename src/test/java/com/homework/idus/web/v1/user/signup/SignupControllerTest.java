@@ -1,6 +1,8 @@
 package com.homework.idus.web.v1.user.signup;
 
+import com.homework.idus.core.user.UserCrudSupplier;
 import com.homework.idus.util.ResourceMockUtil;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -16,10 +18,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @DisplayName("SignupController")
-class SignupControllerTest {
+class SignupControllerTest extends UserCrudSupplier {
 
     @Autowired
     MockMvc mockMvc;
+
+    @BeforeEach
+    void prepareData() {
+        getUserDeleteAll();
+    }
 
     @Nested
     @DisplayName("signup 메소드")
