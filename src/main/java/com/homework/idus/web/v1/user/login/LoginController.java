@@ -22,7 +22,7 @@ public class LoginController implements ForUser {
 
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
-    public ApiResponseModel<?> signup(@Valid @RequestBody LoginRequest request) {
+    public ApiResponseModel<?> login(@Valid @RequestBody LoginRequest request) {
         User user = userSearcher.findByName(request)
                 .orElseThrow(() -> new UserNotFountException("로그인 정보를 다시 확인해주세요."));
 
