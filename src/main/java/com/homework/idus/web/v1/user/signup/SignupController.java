@@ -1,5 +1,6 @@
 package com.homework.idus.web.v1.user.signup;
 
+import com.homework.idus.axiom.target.ForUser;
 import com.homework.idus.core.user.command.User;
 import com.homework.idus.core.user.command.UserCreator;
 import com.homework.idus.web.v1.axiom.ApiResponseModel;
@@ -12,7 +13,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/v1/user")
 @RequiredArgsConstructor
-public class SignupController {
+public class SignupController implements ForUser {
 
     private final UserCreator userCreator;
 

@@ -1,7 +1,7 @@
 package com.homework.idus.web.v1.user.signup;
 
 import com.homework.idus.core.user.Gender;
-import com.homework.idus.core.user.UserDescription;
+import com.homework.idus.core.user.command.UserDescription;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
