@@ -1,6 +1,5 @@
 package com.homework.idus.web.v1.user.signup;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.homework.idus.util.ResourceMockUtil;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

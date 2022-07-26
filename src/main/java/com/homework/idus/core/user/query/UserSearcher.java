@@ -21,4 +21,9 @@ public class UserSearcher {
       return Optional.of(savedUser);
     }
 
+    public User findByUserNo(Long userNo) {
+        return searcherRepository.findByUserNo(userNo)
+                .orElseThrow(() -> new UserNotFountException(String.format("사용자 정보를 찾을 수 없습니다." +
+                        "요청하신 사용자번호 [%d]", userNo)));
+    }
 }
