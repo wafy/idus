@@ -13,8 +13,9 @@ public class UserFixture {
     public static final String givenEmail = "test@idus.com";
     public static final Gender givenGender = Gender.MAN;
 
-    public final static String givenDisableName = "존재하지 않는 회원 이름";
-    public final static String givenDisablePassword = "XXXXXX";
+    public final static Long givenNotExistUserNo = 999999999999L;
+
+
 
 
     public static User _회원가입() {

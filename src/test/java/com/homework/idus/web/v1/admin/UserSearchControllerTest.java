@@ -52,5 +52,6 @@ class UserSearchControllerTest extends UserCrudSupplier {
                         .andExpect(status().isOk());
             }
         }
+
     }
 }

@@ -1,5 +1,6 @@
 package com.homework.idus.core.user.query;
 
+import com.homework.idus.core.exception.UserNotFountException;
 import com.homework.idus.core.user.UserCrudSupplier;
 import com.homework.idus.core.user.command.User;
 import com.homework.idus.core.user.fixture.UserFixture;
@@ -39,6 +40,18 @@ class UserSearcherTest extends UserCrudSupplier {
                 User saved = userSearcher.findByUserNo(savedUser.getUserNo());
                 Assertions.assertNotNull(saved);
                 Assertions.assertEquals(savedUser.getUserNo(), saved.getUserNo());
+            }
+        }
+
+        @Nested
+        @DisplayName("등록되지 않는 사용자 번호로 조외 요쳥이면")
+        class Context_not_exist_userNo {
+
+            @Test
+            @DisplayName("예외를 리턴한다")
+            void it_throws_exception() {
+                Assertions.assertThrows(UserNotFountException.class,
+                        () -> userSearcher.findByUserNo(UserFixture.givenNotExistUserNo));
             }
         }
     }
