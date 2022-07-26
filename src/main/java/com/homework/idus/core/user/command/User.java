@@ -61,6 +61,7 @@ public class User implements UserDetails {
         this.gender = gender;
     }
 
+    @Builder
     public static User of(String name,
                           String nickname,
                           String password,

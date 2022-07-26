@@ -3,6 +3,8 @@ package com.homework.idus.core.user;
 import com.homework.idus.axiom.target.ForTestOnly;
 import com.homework.idus.core.user.command.UserCreator;
 import com.homework.idus.core.user.command.UserRepository;
+import com.homework.idus.core.user.query.UserPageSearchRepository;
+import com.homework.idus.core.user.query.UserPageSearcher;
 import com.homework.idus.core.user.query.UserSearcher;
 import com.homework.idus.core.user.query.UserSearcherRepository;
 import lombok.AccessLevel;
@@ -20,10 +22,15 @@ public abstract class UserCrudSupplier implements ForTestOnly {
     @Getter(AccessLevel.PROTECTED)
     private UserSearcherRepository userSearcherRepository;
 
+    @Autowired
+    @Getter(AccessLevel.PROTECTED)
+    private UserPageSearchRepository userPageSearchRepository;
 
     private UserCreator userCreator;
 
     private UserSearcher userSearcher;
+
+    private UserPageSearcher userPageSearcher;
 
 
     protected UserCreator getUserCreator() {
@@ -34,8 +41,13 @@ public abstract class UserCrudSupplier implements ForTestOnly {
         return userSearcher == null ? new UserSearcher(userSearcherRepository) : userSearcher;
     }
 
+    protected UserPageSearcher getUserPageSearcher() {
+        return userPageSearcher == null ? new UserPageSearcher(userPageSearchRepository) : userPageSearcher;
+    }
+
     protected void getUserDeleteAll() {
         userRepository.deleteAll();
     }
+
 
 }
