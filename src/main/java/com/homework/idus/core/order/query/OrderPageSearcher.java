@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class OrderSearcher {
+public class OrderPageSearcher {
     private final OrderPageRepository orderPageRepository;
 
 

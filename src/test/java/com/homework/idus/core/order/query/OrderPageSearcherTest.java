@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 
 @DataJpaTest
 @DisplayName("OrderSearcher")
-class OrderSearcherTest extends TestSupplier {
+class OrderPageSearcherTest extends TestSupplier {
 
     @BeforeEach
     void prepareData() {
@@ -38,7 +38,7 @@ class OrderSearcherTest extends TestSupplier {
             @DisplayName("요청한 회원번호에 속한 주문목록을 리턴한다")
             void it_returns_order_findAll() {
                 Pageable pageable = PageRequest.of(1, 10);
-                Page<Order> orders = getOrderSearcher().findAll(savedUser.getUserNo(), pageable);
+                Page<Order> orders = getOrderPageSearcher().findAll(savedUser.getUserNo(), pageable);
                 Assertions.assertEquals(1, orders.getTotalElements());
             }
         }
