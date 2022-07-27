@@ -1,7 +1,7 @@
 package com.homework.idus.core.user.query;
 
 import com.homework.idus.core.exception.UserNotFountException;
-import com.homework.idus.core.user.UserCrudSupplier;
+import com.homework.idus.core.user.TestSupplier;
 import com.homework.idus.core.user.command.User;
 import com.homework.idus.core.user.fixture.UserFixture;
 import org.junit.jupiter.api.*;
@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @DisplayName("UserSearcher")
-class UserSearcherTest extends UserCrudSupplier {
+class TestSearcherTest extends TestSupplier {
 
     @Autowired
     UserSearcher userSearcher;

@@ -1,6 +1,6 @@
 package com.homework.idus.web.v1.user.signup;
 
-import com.homework.idus.core.user.UserCrudSupplier;
+import com.homework.idus.core.user.TestSupplier;
 import com.homework.idus.util.ResourceMockUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @DisplayName("SignupController")
-class SignupControllerTest extends UserCrudSupplier {
+class SignupControllerTest extends TestSupplier {
 
     @Autowired
     MockMvc mockMvc;

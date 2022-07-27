@@ -1,6 +1,6 @@
 package com.homework.idus.web.v1.admin;
 
-import com.homework.idus.core.user.UserCrudSupplier;
+import com.homework.idus.core.user.TestSupplier;
 import com.homework.idus.core.user.command.User;
 import com.homework.idus.core.user.fixture.UserFixture;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @DisplayName("UserSearchController")
-class UserSearchControllerTest extends UserCrudSupplier {
+class TestSearchControllerTest extends TestSupplier {
 
     @Autowired
     MockMvc mockMvc;

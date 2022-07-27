@@ -10,7 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 @DataJpaTest
 @DisplayName("UserCreator")
-public class UserCreatorTest extends UserCrudSupplier {
+public class TestCreatorTest extends TestSupplier {
 
     @Nested
     @DisplayName("create 메소드")

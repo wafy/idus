@@ -1,7 +1,7 @@
 package com.homework.idus.core.user.query;
 
 import com.homework.idus.core.user.Gender;
-import com.homework.idus.core.user.UserCrudSupplier;
+import com.homework.idus.core.user.TestSupplier;
 import com.homework.idus.core.user.command.User;
 import com.homework.idus.web.v1.admin.command.search.SearchKey;
 import org.junit.jupiter.api.*;
@@ -11,7 +11,7 @@ import org.springframework.data.domain.PageRequest;
 
 @SpringBootTest
 @DisplayName("UserPageSearcher")
-class UserPageSearcherTest extends UserCrudSupplier {
+class TestPageSearcherTest extends TestSupplier {
 
     @BeforeEach
     void prepareData() {
