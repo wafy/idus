@@ -1,11 +1,13 @@
 package com.homework.idus.core.user.command;
 
+import com.homework.idus.core.order.query.Order;
 import com.homework.idus.core.user.Gender;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,7 +20,7 @@ import java.util.stream.Collectors;
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userNo;
 
     @Column(nullable = false, length = 20)
@@ -29,7 +31,7 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 100)
     private String password;
 
-    @Column(nullable = false,length = 20)
+    @Column(nullable = false, length = 20)
     private String mobilePhoneNo;
 
     @Column(nullable = false, length = 100)
@@ -43,16 +45,27 @@ public class User implements UserDetails {
     @Builder.Default
     private List<String> roles = new ArrayList<>();
 
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders = new ArrayList<>();
+
+
     /**
      * JPA가 필요로 합니다.
      */
-   public User() {}
+    public User() {
+    }
+
+    public User(Long userNo) {
+        this.userNo = userNo;
+    }
+
     private User(String name,
-                String nickname,
-                String password,
-                String mobilePhoneNo,
-                String email,
-                Gender gender) {
+                 String nickname,
+                 String password,
+                 String mobilePhoneNo,
+                 String email,
+                 Gender gender) {
         this.name = name;
         this.nickname = nickname;
         this.password = new BCryptPasswordEncoder().encode(password);

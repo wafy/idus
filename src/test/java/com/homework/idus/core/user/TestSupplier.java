@@ -1,6 +1,7 @@
 package com.homework.idus.core.user;
 
 import com.homework.idus.axiom.target.ForTestOnly;
+import com.homework.idus.core.order.query.Order;
 import com.homework.idus.core.order.query.OrderRepository;
 import com.homework.idus.core.order.query.OrderSearcher;
 import com.homework.idus.core.user.command.UserCreator;
@@ -57,7 +58,15 @@ public abstract class TestSupplier implements ForTestOnly {
         userRepository.deleteAll();
     }
 
+    protected void getOrderDeleteAll() {
+        orderRepository.deleteAll();
+    }
+
     protected OrderSearcher getOrderSearcher() {
         return orderSearcher == null ? new OrderSearcher(orderRepository) : orderSearcher;
+    }
+
+    protected Order getOrderSave(Order order) {
+        return orderRepository.save(order);
     }
 }

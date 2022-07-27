@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserPageSearchRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
-
 }
