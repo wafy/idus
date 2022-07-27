@@ -26,6 +26,7 @@ class LoginControllerTest extends TestSupplier {
 
     @BeforeEach
     void prepareData() {
+        getOrderDeleteAll();
         getUserDeleteAll();
     }
 
