@@ -2,7 +2,7 @@ package com.homework.idus.core.user;
 
 import com.homework.idus.axiom.target.ForTestOnly;
 import com.homework.idus.core.order.query.Order;
-import com.homework.idus.core.order.query.OrderRepository;
+import com.homework.idus.core.order.query.OrderPageRepository;
 import com.homework.idus.core.order.query.OrderSearcher;
 import com.homework.idus.core.user.command.UserCreator;
 import com.homework.idus.core.user.command.UserRepository;
@@ -31,7 +31,7 @@ public abstract class TestSupplier implements ForTestOnly {
 
     @Autowired
     @Getter(AccessLevel.PROTECTED)
-    private OrderRepository orderRepository;
+    private OrderPageRepository orderPageRepository;
 
     private UserCreator userCreator;
 
@@ -59,14 +59,14 @@ public abstract class TestSupplier implements ForTestOnly {
     }
 
     protected void getOrderDeleteAll() {
-        orderRepository.deleteAll();
+        orderPageRepository.deleteAll();
     }
 
     protected OrderSearcher getOrderSearcher() {
-        return orderSearcher == null ? new OrderSearcher(orderRepository) : orderSearcher;
+        return orderSearcher == null ? new OrderSearcher(orderPageRepository) : orderSearcher;
     }
 
     protected Order getOrderSave(Order order) {
-        return orderRepository.save(order);
+        return orderPageRepository.save(order);
     }
 }

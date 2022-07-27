@@ -9,8 +9,10 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface OrderRepository extends JpaRepository<Order, Long> {
+public interface OrderPageRepository extends JpaRepository<Order, Long> {
 
     @Query(value = "select o from Order o where o.user.userNo =:userNo")
     Page<Order> findAll(@Param("userNo") Long userNo, Pageable pageable);
+
+
 }

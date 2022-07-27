@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class OrderSearcher {
-    private final OrderRepository orderRepository;
+    private final OrderPageRepository orderPageRepository;
 
 
     public Page<Order> findAll(Long userNo, Pageable pageable) {
-        return orderRepository.findAll(userNo, pageable);
+        return orderPageRepository.findAll(userNo, pageable);
     }
 
 }
