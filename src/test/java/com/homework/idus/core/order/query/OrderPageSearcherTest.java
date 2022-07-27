@@ -11,7 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 @DataJpaTest
-@DisplayName("OrderSearcher")
+@DisplayName("OrderPageSearcher")
 class OrderPageSearcherTest extends TestSupplier {
 
     @BeforeEach
