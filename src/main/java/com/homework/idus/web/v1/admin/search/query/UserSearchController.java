@@ -5,12 +5,17 @@ import com.homework.idus.core.user.command.User;
 import com.homework.idus.core.user.query.UserPageSearcher;
 import com.homework.idus.core.user.query.UserSearcher;
 import com.homework.idus.web.v1.axiom.ApiResponseModel;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+@Api(tags = {"3. 관리자회원조회"})
 @RestController
 @RequestMapping("/v1/admin/user/search")
 @RequiredArgsConstructor
@@ -27,6 +32,10 @@ public class UserSearchController implements ForAdmin {
      */
     @GetMapping("/{userNo}")
     @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "회원단건조회", notes = "단일회원 상세정보를 조회 합니다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "정상응답")
+    })
     public ApiResponseModel<?> findByUserNo(@PathVariable Long userNo) {
         User user = userSearcher.findByUserNo(userNo);
 
@@ -43,6 +52,10 @@ public class UserSearchController implements ForAdmin {
      */
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "회원목록", notes = "회원 목록 조회 합니다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "정상응답")
+    })
     public Page<UserSearchResponse> listUser(@ModelAttribute UserSearchRequest request,
                                              Pageable pageable) {
 
