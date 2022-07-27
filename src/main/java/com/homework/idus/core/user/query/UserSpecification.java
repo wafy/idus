@@ -7,10 +7,10 @@ public class UserSpecification {
 
 
     public static Specification<User> likeName(String name) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("name"), "%" + name + "%");
+        return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("name"), name + "%");
     }
 
     public static Specification<User> likeEmail(String email) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("email"), "%" + email + "%");
+        return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("email"), email + "%");
     }
 }

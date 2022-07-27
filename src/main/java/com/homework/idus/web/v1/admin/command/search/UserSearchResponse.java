@@ -1,4 +1,4 @@
-package com.homework.idus.web.v1.admin.search;
+package com.homework.idus.web.v1.admin.command.search;
 
 import com.homework.idus.core.user.Gender;
 import com.homework.idus.core.user.command.User;
