@@ -1,5 +1,6 @@
 package com.homework.idus.web.v1.admin.search.query;
 
+import com.homework.idus.core.order.query.Order;
 import com.homework.idus.core.user.Gender;
 import com.homework.idus.core.user.command.User;
 import lombok.Getter;
@@ -14,6 +15,7 @@ public class UserSearchResponse {
     private String email;
     private String mobilePhoneNo;
     private Gender gender;
+    private OrderSearchResponse order;
 
     public UserSearchResponse(User user) {
         this.name = user.getName();
@@ -21,5 +23,6 @@ public class UserSearchResponse {
         this.email = user.getEmail();
         this.mobilePhoneNo = user.getMobilePhoneNo();
         this.gender = user.getGender();
+        this.order = new OrderSearchResponse(user.getOrders().get(0));
     }
 }
