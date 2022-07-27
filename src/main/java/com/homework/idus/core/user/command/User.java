@@ -57,7 +57,7 @@ public class User implements UserDetails {
 
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
-   // @Size(min=1, max = 1)
+     @Size(max = 1)
     private List<Order> orders = new ArrayList<>();
 
 
