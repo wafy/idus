@@ -16,5 +16,6 @@ import lombok.NoArgsConstructor;
 public class ApiResponseModel<E> {
 
     private boolean status;
+    private String message;
     private E data;
 }
