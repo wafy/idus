@@ -2,6 +2,7 @@ package com.homework.idus.web.v1.admin.order.query;
 
 import com.homework.idus.core.order.query.Order;
 import com.homework.idus.core.order.query.OrderPageSearcher;
+import com.homework.idus.web.v1.admin.UnauthorizedException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -10,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -27,7 +30,12 @@ public class OrderSearchController {
             @ApiResponse(code = 200, message = "정상응답")
     })
     public Page<OrderResponse> findAll(@PathVariable Long userNo,
-                                       Pageable pageable) {
+                                       Pageable pageable,
+                                       @AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            throw new UnauthorizedException("토큰정보가 누락되었습니다.");
+        }
+
         Page<Order> orders = orderPageSearcher.findAll(userNo, pageable);
         return orders.map(OrderResponse::new);
     }

@@ -4,6 +4,7 @@ import com.homework.idus.axiom.target.ForAdmin;
 import com.homework.idus.core.user.command.User;
 import com.homework.idus.core.user.query.UserPageSearcher;
 import com.homework.idus.core.user.query.UserSearcher;
+import com.homework.idus.web.v1.admin.UnauthorizedException;
 import com.homework.idus.web.v1.axiom.ApiResponseModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @Api(tags = {"3. 관리자회원조회"})
@@ -27,6 +30,7 @@ public class UserSearchController implements ForAdmin {
 
     /**
      * 사용자 정보를 한명 조회해 리턴합니다.
+     *
      * @param userNo
      * @return 조회 결과 사용자
      */
@@ -36,7 +40,12 @@ public class UserSearchController implements ForAdmin {
     @ApiResponses({
             @ApiResponse(code = 200, message = "정상응답")
     })
-    public ApiResponseModel<?> findByUserNo(@PathVariable Long userNo) {
+    public ApiResponseModel<?> findByUserNo(@PathVariable Long userNo,
+                                            @AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            throw new UnauthorizedException("토큰정보가 누락되었습니다.");
+        }
+
         User user = userSearcher.findByUserNo(userNo);
 
         return ApiResponseModel.builder()
@@ -47,6 +56,7 @@ public class UserSearchController implements ForAdmin {
 
     /**
      * 여려명의 사용자 정보를 조회해 리턴합니다.
+     *
      * @param request
      * @return 조회 결과 사용자 목록
      */
@@ -57,7 +67,11 @@ public class UserSearchController implements ForAdmin {
             @ApiResponse(code = 200, message = "정상응답")
     })
     public Page<UserSearchResponse> listUser(@ModelAttribute UserSearchRequest request,
-                                             Pageable pageable) {
+                                             Pageable pageable,
+                                             @AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            throw new UnauthorizedException("토큰정보가 누락되었습니다.");
+        }
 
         Page<User> users = userPageSearcher.findAll(request, pageable);
         return users.map(UserSearchResponse::new);
