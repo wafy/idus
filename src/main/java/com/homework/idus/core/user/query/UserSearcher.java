@@ -4,6 +4,7 @@ import com.homework.idus.core.exception.UserNotFountException;
 import com.homework.idus.core.user.command.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -13,6 +14,7 @@ public class UserSearcher {
 
     private final UserSearcherRepository searcherRepository;
 
+    @Transactional(readOnly = true)
     public Optional<User> findByName(UserLoginDescription user) {
       User savedUser =searcherRepository.findByName(user.getName())
               .orElseThrow(() -> new UserNotFountException("사용자 정보를 찾을 수 없습니다."));
@@ -21,6 +23,7 @@ public class UserSearcher {
       return Optional.of(savedUser);
     }
 
+    @Transactional(readOnly = true)
     public User findByUserNo(Long userNo) {
         return searcherRepository.findByUserNo(userNo)
                 .orElseThrow(() -> new UserNotFountException(String.format("사용자 정보를 찾을 수 없습니다." +

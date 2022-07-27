@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -14,6 +15,7 @@ public class UserPageSearcher {
 
     private final UserPageSearchRepository userPageSearchRepository;
 
+    @Transactional(readOnly = true)
     public Page<User> findAll(UserSearchDescription command, Pageable pageable) {
         Specification<User> spec = (root, query, criteriaBuilder) -> null;
 

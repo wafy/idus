@@ -5,6 +5,7 @@ import com.homework.idus.core.user.query.UserSearcherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+
 @Service
 @RequiredArgsConstructor
 public class UserCreator {
