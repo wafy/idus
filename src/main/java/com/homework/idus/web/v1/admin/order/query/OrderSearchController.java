@@ -1,4 +1,4 @@
-package com.homework.idus.web.v1.admin.order.command;
+package com.homework.idus.web.v1.admin.order.query;
 
 import com.homework.idus.core.order.query.Order;
 import com.homework.idus.core.order.query.OrderSearcher;

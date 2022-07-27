@@ -1,6 +1,7 @@
 package com.homework.idus.web.v1.user.signup;
 
 import com.homework.idus.core.user.fixture.UserFixture;
+import com.homework.idus.web.v1.user.signup.command.SignupRequest;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

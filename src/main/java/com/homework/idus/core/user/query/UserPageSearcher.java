@@ -1,7 +1,7 @@
 package com.homework.idus.core.user.query;
 
 import com.homework.idus.core.user.command.User;
-import com.homework.idus.web.v1.admin.command.search.SearchKey;
+import com.homework.idus.web.v1.admin.search.query.SearchKey;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

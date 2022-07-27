@@ -1,4 +1,4 @@
-package com.homework.idus.web.v1.user.signup;
+package com.homework.idus.web.v1.user.signup.command;
 
 
 import com.homework.idus.core.user.Gender;

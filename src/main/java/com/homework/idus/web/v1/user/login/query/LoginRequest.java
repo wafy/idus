@@ -1,4 +1,4 @@
-package com.homework.idus.web.v1.user.login;
+package com.homework.idus.web.v1.user.login.query;
 
 import com.homework.idus.core.user.query.UserLoginDescription;
 

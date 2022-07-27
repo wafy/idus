@@ -1,4 +1,4 @@
-package com.homework.idus.web.v1.admin.command.search;
+package com.homework.idus.web.v1.admin.search.query;
 
 import com.homework.idus.axiom.target.ForAdmin;
 import com.homework.idus.core.user.command.User;
