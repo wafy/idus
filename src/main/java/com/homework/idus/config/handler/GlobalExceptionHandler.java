@@ -1,5 +1,6 @@
 package com.homework.idus.config.handler;
 
+import com.homework.idus.core.exception.UserExistException;
 import com.homework.idus.core.exception.UserNotFountException;
 import com.homework.idus.web.v1.admin.UnauthorizedException;
 import com.homework.idus.web.v1.axiom.ApiResponseModel;
@@ -23,9 +24,14 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(e);
     }
 
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(UserExistException.class)
+    public ApiResponseModel<?> UserExistExceptionHandle(UserExistException e) {
+        return buildErrorResponse(e);
+    }
+
 
     public ApiResponseModel<?> buildErrorResponse(BusinessException ex) {
-
         return ApiResponseModel.builder()
                 .status(false)
                 .message(ex.getMessage())

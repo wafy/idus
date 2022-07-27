@@ -4,6 +4,7 @@ import com.homework.idus.core.user.command.User;
 import com.homework.idus.web.v1.admin.search.query.SearchKey;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class UserPageSearcher {
     private final UserPageSearchRepository userPageSearchRepository;
 
     @Transactional(readOnly = true)
-    public Page<User> findAll(UserSearchDescription command, Pageable pageable) {
+    public Page<User> findAll(UserSearchDescription command) {
         Specification<User> spec = (root, query, criteriaBuilder) -> null;
 
         if (command.getSearchKey() != null && command.getSearchKey() == SearchKey.NAME) {
@@ -26,6 +27,8 @@ public class UserPageSearcher {
         if (command.getSearchKey() != null && command.getSearchKey() == SearchKey.EMAIL) {
             spec = spec.and(UserSpecification.likeEmail(command.getSearchValue()));
         }
+
+        Pageable pageable = PageRequest.of(command.getPage(), command.getSize());
 
         return userPageSearchRepository.findAll(spec, pageable);
     }

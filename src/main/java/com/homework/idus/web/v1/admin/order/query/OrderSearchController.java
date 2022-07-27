@@ -30,13 +30,13 @@ public class OrderSearchController {
             @ApiResponse(code = 200, message = "정상응답")
     })
     public Page<OrderResponse> findAll(@PathVariable Long userNo,
-                                       Pageable pageable,
+                                       @RequestBody OrderRequest request,
                                        @AuthenticationPrincipal UserDetails userDetails) {
         if (userDetails == null) {
             throw new UnauthorizedException("토큰정보가 누락되었습니다.");
         }
 
-        Page<Order> orders = orderPageSearcher.findAll(userNo, pageable);
+        Page<Order> orders = orderPageSearcher.findAll(userNo, request);
         return orders.map(OrderResponse::new);
     }
 }

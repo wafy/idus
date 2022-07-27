@@ -1,5 +1,6 @@
 package com.homework.idus.core.order.query;
 
+import com.homework.idus.axiom.query.Pager;
 import com.homework.idus.core.user.TestSupplier;
 import com.homework.idus.core.user.command.User;
 import com.homework.idus.core.user.fixture.OrderFixture;
@@ -7,8 +8,6 @@ import com.homework.idus.core.user.fixture.UserFixture;
 import org.junit.jupiter.api.*;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
 @DataJpaTest
 @DisplayName("OrderPageSearcher")
@@ -16,6 +15,7 @@ class OrderPageSearcherTest extends TestSupplier {
 
     @BeforeEach
     void prepareData() {
+        getOrderDeleteAll();
         getUserDeleteAll();
     }
 
@@ -37,8 +37,18 @@ class OrderPageSearcherTest extends TestSupplier {
             @Test
             @DisplayName("요청한 회원번호에 속한 주문목록을 리턴한다")
             void it_returns_order_findAll() {
-                Pageable pageable = PageRequest.of(1, 10);
-                Page<Order> orders = getOrderPageSearcher().findAll(savedUser.getUserNo(), pageable);
+                Pager pager = new Pager() {
+                    @Override
+                    public int getPage() {
+                        return 0;
+                    }
+
+                    @Override
+                    public int getSize() {
+                        return 10;
+                    }
+                };
+                Page<Order> orders = getOrderPageSearcher().findAll(savedUser.getUserNo(), pager);
                 Assertions.assertEquals(1, orders.getTotalElements());
             }
         }

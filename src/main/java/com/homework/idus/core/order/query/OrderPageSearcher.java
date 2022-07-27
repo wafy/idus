@@ -1,7 +1,9 @@
 package com.homework.idus.core.order.query;
 
+import com.homework.idus.axiom.query.Pager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +15,8 @@ public class OrderPageSearcher {
     private final OrderPageRepository orderPageRepository;
 
     @Transactional(readOnly = true)
-    public Page<Order> findAll(Long userNo, Pageable pageable) {
+    public Page<Order> findAll(Long userNo, Pager pager) {
+        Pageable pageable = PageRequest.of(pager.getPage(), pager.getSize());
         return orderPageRepository.findAll(userNo, pageable);
     }
 

@@ -10,6 +10,7 @@ import com.homework.idus.core.user.query.UserSearcher;
 import com.homework.idus.core.user.query.UserSearcherRepository;
 import lombok.AccessLevel;
 import lombok.Getter;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -31,10 +32,6 @@ public abstract class TestSupplier implements ForTestOnly {
     @Getter(AccessLevel.PROTECTED)
     private OrderPageRepository orderPageRepository;
 
-    @Autowired
-    @Getter(AccessLevel.PROTECTED)
-    private OrderRepository orderRepository;
-
     private UserCreator userCreator;
 
     private UserSearcher userSearcher;
@@ -42,8 +39,6 @@ public abstract class TestSupplier implements ForTestOnly {
     private UserPageSearcher userPageSearcher;
 
     private OrderPageSearcher orderPageSearcher;
-
-    private OrderSearcher orderSearcher;
 
 
     protected UserCreator getUserCreator() {
@@ -70,11 +65,8 @@ public abstract class TestSupplier implements ForTestOnly {
         return orderPageSearcher == null ? new OrderPageSearcher(orderPageRepository) : orderPageSearcher;
     }
 
-    protected OrderSearcher getOrderSearcher() {
-        return orderSearcher == null ? new OrderSearcher(orderRepository) : orderSearcher;
-    }
-
     protected Order getOrderSave(Order order) {
         return orderPageRepository.save(order);
     }
+
 }

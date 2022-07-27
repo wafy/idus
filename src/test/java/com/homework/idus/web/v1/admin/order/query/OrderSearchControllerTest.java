@@ -5,6 +5,7 @@ import com.homework.idus.core.user.TestSupplier;
 import com.homework.idus.core.user.command.User;
 import com.homework.idus.core.user.fixture.OrderFixture;
 import com.homework.idus.core.user.fixture.UserFixture;
+import com.homework.idus.filter.JwtTokenProvider;
 import com.homework.idus.util.ResourceMockUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,8 +14,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.ArrayList;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -26,6 +30,9 @@ class OrderSearchControllerTest extends TestSupplier {
 
     @Autowired
     MockMvc mockMvc;
+
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
 
     @BeforeEach
     void prepareData() {
@@ -54,10 +61,13 @@ class OrderSearchControllerTest extends TestSupplier {
             @Test
             @DisplayName("HTTP 응답코드 200를 반환한다")
             void it_returns_200() throws Exception {
+                String accessToken = jwtTokenProvider.createToken(savedUser.getName(), new ArrayList<>());
+
                 String request = ResourceMockUtil.getString("v1/admin/order.json");
 
                 mockMvc.perform(get("/v1/admin/order/"+ savedUser.getUserNo())
                                 .content(request)
+                                .header(HttpHeaders.AUTHORIZATION, "Bearer "+ accessToken)
                                 .contentType(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk());
             }

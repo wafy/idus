@@ -15,6 +15,7 @@ class TestPageSearcherTest extends TestSupplier {
 
     @BeforeEach
     void prepareData() {
+        getOrderDeleteAll();
         getUserDeleteAll();
     }
 
@@ -58,10 +59,19 @@ class TestPageSearcherTest extends TestSupplier {
                     public String getSearchValue() {
                         return null;
                     }
+
+                    @Override
+                    public int getPage() {
+                        return 1;
+                    }
+
+                    @Override
+                    public int getSize() {
+                        return 10;
+                    }
                 };
 
-                PageRequest pageRequest = PageRequest.of(0, 10);
-                Page<User> savedUser = getUserPageSearcher().findAll(command, pageRequest);
+                Page<User> savedUser = getUserPageSearcher().findAll(command);
                 Assertions.assertEquals(totalCount, savedUser.getTotalElements());
             }
         }
@@ -84,11 +94,20 @@ class TestPageSearcherTest extends TestSupplier {
                     public String getSearchValue() {
                         return searchName;
                     }
+
+                    @Override
+                    public int getPage() {
+                        return 0;
+                    }
+
+                    @Override
+                    public int getSize() {
+                        return 10;
+                    }
                 };
 
 
-                PageRequest pageRequest = PageRequest.of(0, 10);
-                Page<User> savedUser = getUserPageSearcher().findAll(command, pageRequest);
+                Page<User> savedUser = getUserPageSearcher().findAll(command);
                 Assertions.assertEquals(totalCount, savedUser.getSize());
                 Assertions.assertEquals(searchName, savedUser.getContent().get(0).getName());
             }
@@ -112,11 +131,20 @@ class TestPageSearcherTest extends TestSupplier {
                     public String getSearchValue() {
                         return searchEmail;
                     }
+
+                    @Override
+                    public int getPage() {
+                        return 0;
+                    }
+
+                    @Override
+                    public int getSize() {
+                        return 10;
+                    }
                 };
 
 
-                PageRequest pageRequest = PageRequest.of(0, 10);
-                Page<User> savedUser = getUserPageSearcher().findAll(command, pageRequest);
+                Page<User> savedUser = getUserPageSearcher().findAll(command);
                 Assertions.assertEquals(totalCount, savedUser.getSize());
                 Assertions.assertEquals(searchEmail, savedUser.getContent().get(0).getEmail());
             }
