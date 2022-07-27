@@ -4,11 +4,15 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/idus?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
     username: root
     driver-class-name: org.mariadb.jdbc.Driver
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
   jpa:
     defer-datasource-initialization: true
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
