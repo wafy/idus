@@ -15,6 +15,12 @@ public interface UserSearcherRepository extends JpaRepository<User, Long> {
 
     long countByName(String name);
 
+    long countByNickname(String nickname);
+
+    long countByMobilePhoneNo(String mobilePhoneNo);
+
+    long countByEmail(String email);
+
     Optional<User> findByUserNo(Long userNo);
 
 
