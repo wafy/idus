@@ -1,6 +1,7 @@
 package com.homework.idus.web.v1.admin.search.query;
 
 import com.homework.idus.core.order.query.Order;
+import com.homework.idus.core.user.command.User;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

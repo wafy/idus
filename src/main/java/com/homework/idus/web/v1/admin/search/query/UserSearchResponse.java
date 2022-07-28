@@ -22,8 +22,6 @@ public class UserSearchResponse {
         this.email = user.getEmail();
         this.mobilePhoneNo = user.getMobilePhoneNo();
         this.gender = user.getGender();
-        // TODO: 최근 주문정보 기능 미구현
-        //this.order = new OrderSearchResponse(user.getOrders().get(0));
-        this.order =null;
+        this.order = new OrderSearchResponse(user.getOrders().get(0));
     }
 }
