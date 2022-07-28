@@ -14,6 +14,11 @@ public class UserSearcher {
 
     private final UserSearcherRepository searcherRepository;
 
+    /**
+     * 사용자 이름으로 조회해 리턴합니다.
+     * @param user 조회요청
+     * @return 조회된 결과
+     */
     @Transactional(readOnly = true)
     public Optional<User> findByName(UserLoginDescription user) {
       User savedUser =searcherRepository.findByName(user.getName())
@@ -23,6 +28,11 @@ public class UserSearcher {
       return Optional.of(savedUser);
     }
 
+    /**
+     * 사용자고유번호로 조회해 리턴합니다.
+     * @param userNo 사용자고유번호
+     * @return 조회된 결과
+     */
     @Transactional(readOnly = true)
     public User findByUserNo(Long userNo) {
         return searcherRepository.findByUserNo(userNo)

@@ -14,6 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderPageSearcher {
     private final OrderPageRepository orderPageRepository;
 
+    /**
+     * 사용자 주문을 조회해 리턴합니다.
+     * @param userNo 사용자번호
+     * @param pager 페이저정보
+     * @return  조회 결과
+     */
     @Transactional(readOnly = true)
     public Page<Order> findAll(Long userNo, Pager pager) {
         Pageable pageable = PageRequest.of(pager.getPage(), pager.getSize());

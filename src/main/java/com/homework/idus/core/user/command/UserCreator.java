@@ -13,6 +13,11 @@ public class UserCreator {
     private final UserRepository userRepository;
     private final UserSearcherRepository userSearcherRepository;
 
+    /**
+     * 사용자 등록을 담당합니다.
+     * @param user 사용자정보
+     * @return 등록된 결과
+     */
     public User create(User user) {
         if (userSearcherRepository.countByName(user.getName()) > 0) {
             throw new UserExistException("이미 가입된 사용자입니다.");

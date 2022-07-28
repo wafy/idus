@@ -16,6 +16,11 @@ public class UserPageSearcher {
 
     private final UserPageSearchRepository userPageSearchRepository;
 
+    /**
+     * 사용자 목록을 조회합니다.
+     * @param command 조회 요청
+     * @return 조회된 결과
+     */
     @Transactional(readOnly = true)
     public Page<User> findAll(UserSearchDescription command) {
         Specification<User> spec = (root, query, criteriaBuilder) -> null;
