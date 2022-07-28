@@ -7,11 +7,10 @@ import com.homework.idus.web.v1.admin.search.query.SearchKey;
 import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 
 @SpringBootTest
 @DisplayName("UserPageSearcher")
-class TestPageSearcherTest extends TestSupplier {
+class UserPageSearcherTest extends TestSupplier {
 
     @BeforeEach
     void prepareData() {

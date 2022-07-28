@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @DisplayName("UserSearcher")
-class TestSearcherTest extends TestSupplier {
+class UserSearcherTest extends TestSupplier {
 
     @Autowired
     UserSearcher userSearcher;
@@ -55,5 +55,4 @@ class TestSearcherTest extends TestSupplier {
             }
         }
     }
-
 }
