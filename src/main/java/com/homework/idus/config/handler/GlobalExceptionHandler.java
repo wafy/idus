@@ -35,6 +35,7 @@ public class GlobalExceptionHandler {
         return ApiResponseModel.builder()
                 .status(false)
                 .message(ex.getMessage())
+                .data(null)
                 .build();
     }
 }

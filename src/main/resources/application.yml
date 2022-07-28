@@ -30,4 +30,13 @@ logging:
     org.springframework.web.client: DEBUG
     org.hibernate.type: trace
 
+springdoc:
+  cache:
+    disabled: true
+  swagger-ui:
+    operations-sorter: sorter
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+
+
 

@@ -2,8 +2,8 @@ package com.homework.idus.core.user.command;
 
 import com.homework.idus.core.order.query.Order;
 import com.homework.idus.core.user.Gender;
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,35 +21,27 @@ import java.util.stream.Collectors;
 @Table(name = "users")
 public class User implements UserDetails {
 
-    @Schema(description = "사용자 고유번호")
-    @Id
+     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userNo;
 
-    @Schema(description = "이름", example = "구름이" , maxLength = 20)
     @Column(nullable = false, length = 20)
     private String name;
 
-    @Schema(description = "별명", example = "idus" ,maxLength = 30)
     @Column(nullable = false, length = 30)
     private String nickname;
 
-    @Schema(description = "비밀번호", example = "1234a12341233!A", maxLength = 100)
-    @Column(nullable = false, length = 100)
+     @Column(nullable = false, length = 100)
     private String password;
 
-    @Schema(description = "전화번호", example = "010-1234-5678", maxLength = 20)
     @Column(nullable = false, length = 20)
     private String mobilePhoneNo;
 
-    @Schema(description = "이메일", example = "cat@idus.com", maxLength = 100)
     @Column(nullable = false, length = 100)
     private String email;
 
-    @Schema(description = "성별", allowableValues = {"MAN", "WOMAN"})
     @Column(length = 10)
     private Gender gender;
-
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
