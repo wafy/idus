@@ -33,7 +33,6 @@
 > application.yml에서는  jdbc:mysql:aurora:로 연결해야하합니다.``
 * Swagger UI
   * `http://localhost:8080/swagger-ui/index.html`
-  > 기존에 RestDoc으로 사용하다보니 스웨거는 처음 사용해보았습니다. 컨트롤단에서 지저분한 어노테이션으로 인해 테스트와 연동되는 RestDoc 좋다고 생각됩니다. 
 
 * 프로젝트 실행 방법
   * 터미널 프로젝트 루트에서 `docker-compose up -d`를 실행하여 데이터베이스를 생성합니다.
